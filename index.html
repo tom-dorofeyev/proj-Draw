@@ -11,7 +11,7 @@
 
 <body onload="init()">
 
-    <canvas onmousemove="draw(event)" id="my-canvas" width="500" height="500">
+    <canvas onmouseout="onStopDraw()" onmousedown="onStartDraw()" onmouseup="onStopDraw()" onmousemove="draw(event)" id="my-canvas" width="500" height="500">
         Update your browser to enjoy canvas!
     </canvas>
 
@@ -24,11 +24,22 @@
     <div class="user-input">
         <div class="fill-color">
             choose fill color: 
-            <input type="color" onchange="changeFillColor(this.value)">
+            <input type="color" value="#000000" id="fill" onchange="changeColor(this)">
+            choose outline color: 
+            <input type="color" value="#3354FF" id="outline" onchange="changeColor(this)">
         </div>
-        <button onclick="changeEl('triangle')">Triangle</button>
-        <button onclick="changeEl('rect')">Rect</button>
-        <button onclick="changeEl('text')">Text</button>
+
+        <div class="select-container">
+            <select id="shape-select" onchange="changeShape(this.value)">
+                <option value="triangle">Triangle</option>
+                <option value="rect">Rect</option>
+                <option value="text">Text</option>
+            </select>
+        </div>
+        
+        <div class="buttons-container">
+            <button onclick="clearCanvas()">Clear</button>
+        </div>
     </div>
 
 
