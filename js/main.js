@@ -82,6 +82,10 @@ function drawText(txt, x, y) {
 function drawArc(x, y) {
     ctx.beginPath();
     ctx.arc(x, y, 50, 0, 2 * Math.PI);
+    ctx.strokeStyle = gOutlineColor;
+    ctx.shadowBlur = 20;
+    ctx.shadowColor = 'rgb(0, 0, 0)';
+    ctx.lineWidth = 10
     ctx.stroke();
 }
 
@@ -89,18 +93,22 @@ function drawRect(x, y) {
     ctx.rect(x, y, 150, 150)
     ctx.fillStyle = gFillColor;
     ctx.strokeStyle = gOutlineColor;
-    ctx.lineWidth = 5;
+    ctx.strokeStyle = gOutlineColor;
+    ctx.fillStyle = gFillColor;
+    ctx.lineWidth = 10;
     ctx.fillRect(x, y, 150, 150)
     ctx.stroke()
 }
 
 function drawInk(x, y) {
     ctx.beginPath();
-    ctx.lineWidth = 10
+    ctx.lineWidth = 50
     ctx.moveTo(x, y);
     ctx.lineTo(x + 1, y + 1);
+    ctx.strokeStyle = gOutlineColor;
+    ctx.fillStyle = gFillColor;
     ctx.lineJoin = ctx.lineCap = 'round';
-    ctx.shadowBlur = 20;
+    ctx.shadowBlur = 10;
     ctx.shadowColor = 'rgb(0, 0, 0)';
     ctx.stroke();
 }
@@ -111,7 +119,7 @@ function drawTriangle(x, y) {
     ctx.lineTo(x + 300, y + 150);
     ctx.lineTo(x + 100, y + 100);
     ctx.closePath()
-    ctx.lineWidth = 5;
+    ctx.lineWidth = 10;
     ctx.strokeStyle = gOutlineColor;
     ctx.fillStyle = gFillColor;
     ctx.stroke();
