@@ -65,9 +65,6 @@ function drawImg() {
 }
 
 function clearCanvas() {
-    // ctx.fillStyle = "rgba(0, 0, 0, 0)";
-    // ctx.clearRect(0, 0, canvas.width, canvas.height)
-    // ctx.fillStyle = 'white'
     ctx.beginPath();
     ctx.fillStyle = "red";
     ctx.fillRect(0, 0, 50000, 50000);
@@ -98,6 +95,7 @@ function drawRect(x, y) {
 }
 
 function drawInk(x, y) {
+    ctx.beginPath();
     ctx.lineWidth = 10
     ctx.moveTo(x, y);
     ctx.lineTo(x + 1, y + 1);
