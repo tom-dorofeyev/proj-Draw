@@ -11,21 +11,18 @@
 
 <body onload="init()">
 
-    <canvas onmouseout="onStopDraw()" onmousedown="onStartDraw()" onmouseup="onStopDraw()" onmousemove="draw(event)" id="my-canvas" width="500" height="500">
+    <canvas onmouseout="onStopDraw()" onmousedown="onStartDraw()" onmouseup="onStopDraw()" onmousemove="draw(event)"
+        id="my-canvas" width="500" height="500">
         Update your browser to enjoy canvas!
     </canvas>
 
-    <!-- <img src="img/cute.jpg" alt=""> -->
-
-
     <a href="#" onclick="downloadCanvas(this)" download="">Download</a>
-
 
     <div class="user-input">
         <div class="fill-color">
-            choose fill color: 
+            choose fill color:
             <input type="color" value="#000000" id="fill" onchange="changeColor(this)">
-            choose outline color: 
+            choose outline color:
             <input type="color" value="#3354FF" id="outline" onchange="changeColor(this)">
         </div>
 
@@ -38,12 +35,11 @@
                 <option value="ink">Ink Spots</option>
             </select>
         </div>
-        
+
         <div class="buttons-container">
             <button onclick="clearCanvas()">Clear</button>
         </div>
     </div>
-
 
     <script src="js/canvas-service.js"></script>
     <script src="js/main.js"></script>

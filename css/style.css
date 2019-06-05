@@ -5,6 +5,10 @@ body {
     border: 1px solid blue;
 }
 
+#my-canvas:hover {
+    cursor: crosshair;
+}
+
 img {
     height: 50px;
     width: 50px;

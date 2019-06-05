@@ -27,7 +27,7 @@ function onStopDraw() {
 
 function draw(ev) {
     if (gIsMouseClicked) {
-        ctx.save()
+        // ctx.save()
         const { offsetX, offsetY } = ev
         switch (currElement) {
             case 'triangle':
@@ -46,7 +46,7 @@ function draw(ev) {
                 drawInk(offsetX, offsetY)
                 break;
         }
-        ctx.restore()
+        // ctx.restore()
     }
     else return
 }
@@ -65,8 +65,13 @@ function drawImg() {
 }
 
 function clearCanvas() {
-    ctx.fillStyle = 'white'
-    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    // ctx.fillStyle = "rgba(0, 0, 0, 0)";
+    // ctx.clearRect(0, 0, canvas.width, canvas.height)
+    // ctx.fillStyle = 'white'
+    ctx.beginPath();
+    ctx.fillStyle = "red";
+    ctx.fillRect(0, 0, 50000, 50000);
+    ctx.clearRect(0, 0, 50000, 50000);
 }
 
 function drawText(txt, x, y) {
@@ -87,10 +92,9 @@ function drawRect(x, y) {
     ctx.rect(x, y, 150, 150)
     ctx.fillStyle = gFillColor;
     ctx.strokeStyle = gOutlineColor;
-    ctx.lineWidth = 7;
+    ctx.lineWidth = 5;
     ctx.fillRect(x, y, 150, 150)
     ctx.stroke()
-    // ctx.fill()
 }
 
 function drawInk(x, y) {
@@ -114,6 +118,7 @@ function drawTriangle(x, y) {
     ctx.fillStyle = gFillColor;
     ctx.stroke();
     ctx.fill()
+    ctx.closePath()
 }
 
 function changeColor(element) {
