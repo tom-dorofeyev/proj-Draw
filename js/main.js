@@ -41,6 +41,9 @@ function draw(ev) {
             case 'arc':
                 drawArc(offsetX, offsetY)
                 break;
+            case 'ink':
+                drawInk(offsetX, offsetY)
+                break;
         }
         ctx.restore()
     }
@@ -63,9 +66,8 @@ function drawImg() {
 }
 
 function clearCanvas() {
-    ctx.fillStyle = 'yellow'
+    ctx.fillStyle = 'white'
     ctx.fillRect(0, 0, canvas.width, canvas.height)
-    ctx.clearRect(50, 50, 100, 100)
 }
 
 function drawText(txt, x, y) {
@@ -84,10 +86,20 @@ function drawArc(x, y) {
 
 function drawRect(x, y) {
     ctx.rect(x, y, 150, 150)
-    ctx.fillStyle = 'orange'
-    ctx.fillRect(x, y, 150, 150)
+    // ctx.fillStyle = 'orange'
+    // ctx.fillRect(x, y, 150, 150)
     ctx.stroke()
-    ctx.fill()
+    // ctx.fill()
+}
+
+function drawInk(x, y) {
+    ctx.lineWidth = 10
+    ctx.moveTo(x, y);
+    ctx.lineTo(x+1, y+1);
+    ctx.lineJoin = ctx.lineCap = 'round';
+    ctx.shadowBlur = 20;
+    ctx.shadowColor = 'rgb(0, 0, 0)';
+    ctx.stroke();
 }
 
 
@@ -99,12 +111,12 @@ function drawTriangle(x, y) {
     ctx.lineTo(x + 100, y + 100);
     ctx.closePath()
 
-    ctx.lineWidth = 5;
-    ctx.strokeStyle = 'blue'
-    ctx.fillStyle = '#ff0000'
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'black'
+    // ctx.fillStyle = '#ff0000'
 
     ctx.stroke();
-    ctx.fill()
+    // ctx.fill()
 
 }
 
