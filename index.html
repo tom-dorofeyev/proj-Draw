@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,26 @@
     <link rel="stylesheet" href="css/style.css">
     <title>proj-Draw</title>
 </head>
+
 <body onload="init()">
 
-    
+    <canvas onmousemove="draw(event)" id="my-canvas" width="500" height="500">
+        Update your browser to enjoy canvas!
+    </canvas>
 
-    <script src="js/canvas-controller.js"></script>
+    <img src="img/cute.jpg" alt="">
+
+
+    <a href="#" onclick="downloadCanvas(this)" download="">Download</a>
+
+
+    <button onclick="changeEl('triangle')">Triangle</button>
+    <button onclick="changeEl('rect')">Rect</button>
+    <button onclick="changeEl('text')">Text</button>
+
+
+    <script src="js/canvas-service.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>

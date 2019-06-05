@@ -1,0 +1,11 @@
+body {
+    margin: 0;
+}
+#my-canvas {
+    border: 1px solid blue;
+}
+
+img {
+    height: 50px;
+    width: 50px;
+}
