@@ -2,6 +2,7 @@
 
 let canvas
 let ctx
+let gIsMouseClicked = false
 
 let currElement = 'triangle'
 
@@ -16,21 +17,34 @@ function init() {
     canvas.height = window.innerHeight - 100
 }
 
+function onStartDraw() {
+    gIsMouseClicked = true;
+}
+function onStopDraw() {
+    gIsMouseClicked = false;
+}
+
 function draw(ev) {
-    ctx.save()
-    const { offsetX, offsetY } = ev
-    switch (currElement) {
-        case 'triangle':
-            drawTriangle(offsetX, offsetY)
-            break;
-        case 'rect':
-            drawRect(offsetX, offsetY)
-            break;
-        case 'text':
-            drawText('test', offsetX, offsetY)
-            break;
+    if (gIsMouseClicked) {
+        ctx.save()
+        const { offsetX, offsetY } = ev
+        switch (currElement) {
+            case 'triangle':
+                drawTriangle(offsetX, offsetY)
+                break;
+            case 'rect':
+                drawRect(offsetX, offsetY)
+                break;
+            case 'text':
+                drawText('Tom-Nadav', offsetX, offsetY)
+                break;
+            case 'arc':
+                drawArc(offsetX, offsetY)
+                break;
+        }
+        ctx.restore()
     }
-    ctx.restore()
+    else return
 }
 
 function downloadCanvas(elLink) {
@@ -62,9 +76,9 @@ function drawText(txt, x, y) {
 }
 
 
-function drawArc() {
+function drawArc(x, y) {
     ctx.beginPath();
-    ctx.arc(100, 75, 50, 0, 1 * Math.PI);
+    ctx.arc(x, y, 50, 0, 2 * Math.PI);
     ctx.stroke();
 }
 
@@ -78,11 +92,11 @@ function drawRect(x, y) {
 
 
 
-function drawTriangle(x,y) {
+function drawTriangle(x, y) {
     ctx.beginPath();
-    ctx.moveTo(x,y);
-    ctx.lineTo(x + 300,y + 150);
-    ctx.lineTo(x + 100, y +  100);
+    ctx.moveTo(x, y);
+    ctx.lineTo(x + 300, y + 150);
+    ctx.lineTo(x + 100, y + 100);
     ctx.closePath()
 
     ctx.lineWidth = 5;
