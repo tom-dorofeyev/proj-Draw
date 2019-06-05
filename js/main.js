@@ -1,10 +1,11 @@
 'use strict'
 
-let canvas
-let ctx
-let gIsMouseClicked = false
-
-let currElement = 'triangle'
+let canvas;
+let ctx;
+let currElement = 'triangle';
+let gFillColor = "#000000";
+let gOutlineColor = "#3354FF"
+let gIsMouseClicked = false;
 
 function changeEl(elName) {
     currElement = elName
@@ -54,8 +55,6 @@ function downloadCanvas(elLink) {
     const data = canvas.toDataURL()
     elLink.href = data
 
-
-
     elLink.download = 'my-img.jpg'
 }
 
@@ -71,8 +70,8 @@ function clearCanvas() {
 }
 
 function drawText(txt, x, y) {
-    ctx.fillStyle = 'white'
-    ctx.strokeStyle = 'green'
+    ctx.fillStyle = gFillColor;
+    ctx.strokeStyle = gOutlineColor;
     ctx.font = "17px Arial";
     ctx.strokeText(txt, x, y);
 }
@@ -86,8 +85,10 @@ function drawArc(x, y) {
 
 function drawRect(x, y) {
     ctx.rect(x, y, 150, 150)
-    // ctx.fillStyle = 'orange'
-    // ctx.fillRect(x, y, 150, 150)
+    ctx.fillStyle = gFillColor;
+    ctx.strokeStyle = gOutlineColor;
+    ctx.lineWidth = 7;
+    ctx.fillRect(x, y, 150, 150)
     ctx.stroke()
     // ctx.fill()
 }
@@ -95,14 +96,12 @@ function drawRect(x, y) {
 function drawInk(x, y) {
     ctx.lineWidth = 10
     ctx.moveTo(x, y);
-    ctx.lineTo(x+1, y+1);
+    ctx.lineTo(x + 1, y + 1);
     ctx.lineJoin = ctx.lineCap = 'round';
     ctx.shadowBlur = 20;
     ctx.shadowColor = 'rgb(0, 0, 0)';
     ctx.stroke();
 }
-
-
 
 function drawTriangle(x, y) {
     ctx.beginPath();
@@ -110,13 +109,26 @@ function drawTriangle(x, y) {
     ctx.lineTo(x + 300, y + 150);
     ctx.lineTo(x + 100, y + 100);
     ctx.closePath()
-
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = 'black'
-    // ctx.fillStyle = '#ff0000'
-
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = gOutlineColor;
+    ctx.fillStyle = gFillColor;
     ctx.stroke();
-    // ctx.fill()
-
+    ctx.fill()
 }
 
+function changeColor(element) {
+    console.log(element);
+    if (element.id === 'fill') {
+        gFillColor = element.value;
+    } else if (element.id === 'outline') {
+        gOutlineColor = element.value;
+    }
+}
+
+function changeShape(value) {
+    if (value === 'triangle') changeEl('triangle')
+    else if (value === 'rect') changeEl('rect')
+    else if (value === 'text') changeEl('text')
+    else if (value === 'ink') changeEl('ink')
+    else if (value === 'arc') changeEl('arc')
+}

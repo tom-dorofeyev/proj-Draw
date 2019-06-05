@@ -15,15 +15,34 @@
         Update your browser to enjoy canvas!
     </canvas>
 
+    <!-- <img src="img/cute.jpg" alt=""> -->
+
 
     <a href="#" onclick="downloadCanvas(this)" download="">Download</a>
 
 
-    <button onclick="changeEl('triangle')">Triangle</button>
-    <button onclick="changeEl('rect')">Rect</button>
-    <button onclick="changeEl('text')">Text</button>
-    <button onclick="changeEl('arc')">Arc</button>
-    <button onclick="changeEl('ink')">Ink Drops</button>
+    <div class="user-input">
+        <div class="fill-color">
+            choose fill color: 
+            <input type="color" value="#000000" id="fill" onchange="changeColor(this)">
+            choose outline color: 
+            <input type="color" value="#3354FF" id="outline" onchange="changeColor(this)">
+        </div>
+
+        <div class="select-container">
+            <select id="shape-select" onchange="changeShape(this.value)">
+                <option value="triangle">Triangle</option>
+                <option value="rect">Rect</option>
+                <option value="text">Text</option>
+                <option value="arc">Arc</option>
+                <option value="ink">Ink Spots</option>
+            </select>
+        </div>
+        
+        <div class="buttons-container">
+            <button onclick="clearCanvas()">Clear</button>
+        </div>
+    </div>
 
 
     <script src="js/canvas-service.js"></script>
