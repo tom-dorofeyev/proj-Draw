@@ -1,9 +1,10 @@
 'use strict'
 
-let canvas
-let ctx
-
-let currElement = 'triangle'
+let canvas;
+let ctx;
+let currElement = 'triangle';
+let fillColor = "#000000";
+let outlineColor = "#3354FF"
 
 function changeEl(elName) {
     currElement = elName
@@ -55,12 +56,11 @@ function clearCanvas() {
 }
 
 function drawText(txt, x, y) {
-    ctx.fillStyle = 'white'
-    ctx.strokeStyle = 'green'
+    ctx.fillStyle = fillColor;
+    ctx.strokeStyle = outlineColor;
     ctx.font = "17px Arial";
     ctx.strokeText(txt, x, y);
 }
-
 
 function drawArc() {
     ctx.beginPath();
@@ -70,13 +70,11 @@ function drawArc() {
 
 function drawRect(x, y) {
     ctx.rect(x, y, 150, 150)
-    ctx.fillStyle = 'orange'
+    ctx.fillStyle = fillColor;
     ctx.fillRect(x, y, 150, 150)
     ctx.stroke()
     ctx.fill()
 }
-
-
 
 function drawTriangle(x,y) {
     ctx.beginPath();
@@ -86,11 +84,14 @@ function drawTriangle(x,y) {
     ctx.closePath()
 
     ctx.lineWidth = 5;
-    ctx.strokeStyle = 'blue'
-    ctx.fillStyle = '#ff0000'
+    ctx.strokeStyle = outlineColor;
+    ctx.fillStyle = fillColor;
 
     ctx.stroke();
     ctx.fill()
 
 }
 
+function changeFillColor(value){
+
+}

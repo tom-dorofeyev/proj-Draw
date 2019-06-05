@@ -15,15 +15,21 @@
         Update your browser to enjoy canvas!
     </canvas>
 
-    <img src="img/cute.jpg" alt="">
+    <!-- <img src="img/cute.jpg" alt=""> -->
 
 
     <a href="#" onclick="downloadCanvas(this)" download="">Download</a>
 
 
-    <button onclick="changeEl('triangle')">Triangle</button>
-    <button onclick="changeEl('rect')">Rect</button>
-    <button onclick="changeEl('text')">Text</button>
+    <div class="user-input">
+        <div class="fill-color">
+            choose fill color: 
+            <input type="color" onchange="changeFillColor(this.value)">
+        </div>
+        <button onclick="changeEl('triangle')">Triangle</button>
+        <button onclick="changeEl('rect')">Rect</button>
+        <button onclick="changeEl('text')">Text</button>
+    </div>
 
 
     <script src="js/canvas-service.js"></script>
